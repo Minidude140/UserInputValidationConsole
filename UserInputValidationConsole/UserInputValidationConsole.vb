@@ -15,22 +15,25 @@ Module UserInputValidationConsole
 
         Dim userInput As String
         Dim userNumber As Integer
+        Dim exitFlag As Boolean = False
 
-        'initial prompt
-        Console.WriteLine("Please enter a number from 1 to 10")
-        Console.WriteLine("Enter 'q' to quit")
+        Do
+            'initial prompt
+            Console.WriteLine("Please enter a number from 1 to 10")
+            Console.WriteLine("Enter 'q' to quit")
 
-        'Get user input
-        userInput = Console.ReadLine()
-        'reflect the user input back to the console
-        Console.WriteLine($"You entered: {userInput}")
+            'Get user input
+            userInput = Console.ReadLine()
+            'reflect the user input back to the console
+            Console.WriteLine($"You entered: {userInput}")
 
-        'attempt to convert the user input to an integer
-        Try
-            userNumber = CInt(userInput)
-        Catch ex As Exception
-            Console.WriteLine($"Sorry... {userInput} is not a number.")
-        End Try
+            'attempt to convert the user input to an integer
+            Try
+                userNumber = CInt(userInput)
+            Catch ex As Exception
+                Console.WriteLine($"Sorry... {userInput} is not a number.")
+            End Try
+        Loop Until exitFlag = True
 
         'pause for user to read console before exit
         Console.Read()
