@@ -24,8 +24,13 @@ Module UserInputValidationConsole
         userInput = Console.ReadLine()
         'reflect the user input back to the console
         Console.WriteLine($"You entered: {userInput}")
+
         'attempt to convert the user input to an integer
-        userNumber = CInt(userInput)
+        Try
+            userNumber = CInt(userInput)
+        Catch ex As Exception
+            Console.WriteLine($"Sorry... {userInput} is not a number.")
+        End Try
 
         'pause for user to read console before exit
         Console.Read()
