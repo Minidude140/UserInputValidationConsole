@@ -31,18 +31,29 @@ Module UserInputValidationConsole
             'attempt to convert the user input to an integer
             Try
                 userNumber = CInt(userInput)
+                'use select case to see if the usernumber is within desired range
+                Select Case userNumber
+                    Case <= 0
+                        Console.WriteLine("I'm sorry, the number should be greater than 0.")
+                    Case > 10
+                        Console.WriteLine("I'm sorry, the number should be less than 11.")
+                    Case 1 To 10
+                        Console.WriteLine("Good Job! Your number is within the range asked for.")
+                    Case Else
+                        Console.WriteLine("Uhhhh.... You aren't suppose to see this.")
+                End Select
             Catch ex As Exception
                 'option compare text is set to be not case sensitive
                 If userInput = "q" Then
                     'if userInput is not a number run the 'catch' code
                     exitFlag = True
-                    Console.WriteLine("Have a nice day!")
-                    Console.WriteLine("Press enter to exit")
                 Else
                     Console.WriteLine($"Sorry... {userInput} is not a number.")
                 End If
             End Try
         Loop Until exitFlag = True
+        Console.WriteLine("Have a nice day!")
+        Console.WriteLine("Press enter to exit")
 
         'pause for user to read console before exit
         Console.Read()
