@@ -35,12 +35,16 @@ Module UserInputValidationConsole
                 Select Case userNumber
                     Case <= 0
                         Console.WriteLine("I'm sorry, the number should be greater than 0.")
+                        Console.WriteLine("Press Enter to start Again")
                     Case > 10
                         Console.WriteLine("I'm sorry, the number should be less than 11.")
+                        Console.WriteLine("Press Enter to start Again")
                     Case 1 To 10
                         Console.WriteLine("Good Job! Your number is within the range asked for.")
+                        Console.WriteLine("Press Enter to start Again")
                     Case Else
                         Console.WriteLine("Uhhhh.... You aren't suppose to see this.")
+                        Console.WriteLine("Press Enter to start Again")
                 End Select
             Catch ex As Exception
                 'option compare text is set to be not case sensitive
@@ -49,8 +53,14 @@ Module UserInputValidationConsole
                     exitFlag = True
                 Else
                     Console.WriteLine($"Sorry... {userInput} is not a number.")
+                    Console.WriteLine("Press Enter to start Again")
                 End If
             End Try
+            If exitFlag = True Then
+            Else
+                Console.ReadLine()
+                Console.Clear()
+            End If
         Loop Until exitFlag = True
         Console.WriteLine("Have a nice day!")
         Console.WriteLine("Press enter to exit")
