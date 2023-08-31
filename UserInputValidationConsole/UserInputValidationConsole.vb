@@ -1,5 +1,6 @@
 ﻿Option Explicit On
 Option Strict On
+Option Compare Text
 
 Module UserInputValidationConsole
 
@@ -31,7 +32,15 @@ Module UserInputValidationConsole
             Try
                 userNumber = CInt(userInput)
             Catch ex As Exception
-                Console.WriteLine($"Sorry... {userInput} is not a number.")
+                'option compare text is set to be not case sensitive
+                If userInput = "q" Then
+                    'if userInput is not a number run the 'catch' code
+                    exitFlag = True
+                    Console.WriteLine("Have a nice day!")
+                    Console.WriteLine("Press enter to exit")
+                Else
+                    Console.WriteLine($"Sorry... {userInput} is not a number.")
+                End If
             End Try
         Loop Until exitFlag = True
 
